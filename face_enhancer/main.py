@@ -1,3 +1,9 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+#
+# 修改者：soccergame
+# 创建日期：20190817
+# ==============================================================================
 import model
 import dataset
 from trainer import Trainer

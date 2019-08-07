@@ -1,3 +1,9 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+#
+# 修改者：soccergame
+# 创建日期：20190817
+# ==============================================================================
 import os
 import cv2
 import numpy as np
@@ -47,14 +53,14 @@ def do_work(test_image,save_name):
     heatmap_avg = np.zeros((oriImg.shape[0], oriImg.shape[1], 19))
     paf_avg = np.zeros((oriImg.shape[0], oriImg.shape[1], 38))
 
-    print 'len of multipler'
-    print len(multiplier)
+    print('len of multipler')
+    print(len(multiplier))
     for m in range(len(multiplier)):
         scale = multiplier[m]
-        print scale
+        print(scale)
         imageToTest = cv2.resize(oriImg, (0,0), fx=scale, fy=scale, interpolation=cv2.INTER_CUBIC)
         imageToTest_padded, pad = util.padRightDownCorner(imageToTest, model['stride'], model['padValue'])
-        print imageToTest_padded.shape
+        print(imageToTest_padded.shape)
         
         net.blobs['data'].reshape(*(1, 3, imageToTest_padded.shape[0], imageToTest_padded.shape[1]))
         #net.forward() # dry run
@@ -183,7 +189,7 @@ def do_work(test_image,save_name):
                         subset[j][-2] += candidate[partBs[i].astype(int), 2] + connection_all[k][i][2]
                 elif found == 2: # if found 2 and disjoint, merge them
                     j1, j2 = subset_idx
-                    print "found = 2"
+                    print('found = 2')
                     membership = ((subset[j1]>=0).astype(int) + (subset[j2]>=0).astype(int))[:-2]
                     if len(np.nonzero(membership == 2)[0]) == 0: #merge
                         subset[j1][:-2] += (subset[j2][:-2] + 1)

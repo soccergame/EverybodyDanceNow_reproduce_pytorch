@@ -283,7 +283,7 @@ class _CU_Net_Wrapper(nn.Module):
         assert loss_num == len(self.loss_achors)
 
         if order >= layer_num:
-            print 'order is larger than the layer number.'
+            print('order is larger than the layer number.')
             exit()
         print('layer number is %d' % layer_num)
         print('loss number is %d' % loss_num)

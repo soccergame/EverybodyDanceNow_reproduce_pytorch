@@ -32,7 +32,7 @@ if reencode:
 	    feat = model.module.encode_features(data['image'], data['inst'])
 	    for label in range(opt.label_nc):
 	    	features[label] = np.append(features[label], feat[label], axis=0) 
-	        
+
 	    print('%d / %d images' % (i+1, dataset_size))    
 	save_name = os.path.join(save_path, name + '.npy')
 	np.save(save_name, features)
